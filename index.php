@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Teszt git</h1>
+   <h1>
+<?php
+
+echo("Teszt Git")
+?>
+
+   </h1>
 </body>
 </html>
