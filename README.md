@@ -1,2 +1,2 @@
 # EKKE_Labor_Projekt
-Projekt labor
+Projekt labor - Hírportál
