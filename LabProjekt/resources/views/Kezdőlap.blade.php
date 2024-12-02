@@ -30,13 +30,13 @@
         </div>
     </nav>
 
-    <!-- Kezdőoldal tartalom -->
+
     <div class="container mt-5">
         <h1>Üdvözlünk a Laravel alkalmazásban!</h1>
         <p>Ez egy alapértelmezett kezdőoldal Bootstrap navigációs menüvel.</p>
     </div>
 
-    <!-- Bootstrap JS -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb9bNx3gJz1v1lmhX4UwM9INhljS8l6Wx7Odl4PzbeVQj+2j4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0Fw9lPpXc46b4a7vdTp1kK1jZvIuopLw6K66T4u0t0p5kFFl" crossorigin="anonymous"></script>
 </body>
