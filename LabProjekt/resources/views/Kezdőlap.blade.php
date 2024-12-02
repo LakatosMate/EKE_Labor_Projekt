@@ -6,5 +6,5 @@ Kezdőlap
 
 @section('content')
   <h1>Üdvözöllek a kezdőoldalon!</h1>
-  <p>Itt kezdődik az oldalad tartalma.</p>
+  <p>Itt kezdődik a hírek.</p>
 @endsection
