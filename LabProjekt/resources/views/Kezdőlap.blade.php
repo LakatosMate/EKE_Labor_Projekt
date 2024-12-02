@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kezdőoldal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJf+U+f2Q4Zb8qk7V5F0JibK3o+kblbZx5iQmvnFVvPU5d6OB5PT0JIt7e4a" crossorigin="anonymous">
-</head>
+ <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.css" rel="stylesheet">
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+ @vite('resources/js/app.js')
 <body>
     <!-- Navigációs menü -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,6 +24,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Szolgáltatások</a>
+                        <input class="btn btn-primary" type="button" value="Input">
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Kapcsolat</a>
@@ -37,7 +41,7 @@
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb9bNx3gJz1v1lmhX4UwM9INhljS8l6Wx7Odl4PzbeVQj+2j4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0Fw9lPpXc46b4a7vdTp1kK1jZvIuopLw6K66T4u0t0p5kFFl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 </body>
 </html>
