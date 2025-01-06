@@ -1,6 +1,8 @@
 # EKKE_Labor_Projekt
 Rendszerszervezés, programozás- és a rendszerfejlesztés alkalmazása.
 
+Wiki: [Visual Studio Code GIT Repo és Telepítés](https://github.com/LakatosMate/EKE_Labor_Projekt/wiki/Projekt-Instal%C3%A1l%C3%A1sa)
+
 # Projekt labor - Hírportál
 Egyszerű hírportál.
 
