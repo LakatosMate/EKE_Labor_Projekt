@@ -18,33 +18,36 @@ Adatbázis: SQLite
 
 ## Rendszerspecifikáció
 A bejegyzések a főoldalon egymás alatt időrendi sorrendben jelennek meg. Legfrissebb bejegyzések lesznek legfelül. Az oldalon elérhető lesz a lapozás funkció biztosítva azt, hogy a felhasználó hány bejegyzést szeretne egyszerre látni (10, 20, 50). A bejegyzéseknél meg kell jeleníteni a szerzőt, dátumot is.
+
 A rendszer használói a következő jogkörrel rendelkezhetnek:
-•	Anonymous – az oldalt megnyitó felhasználó 
-•	Regisztrált felhasználó - hozzáfér, láthat olyan bejegyzéseket, amit az anonymous felhasználó nem. 
-•	Szerkesztő felhasználó – Új bejegyzéseket tud létrehozni, illetve szerkeszteni a saját bejegyzéseit.
-•	Adminisztrátor felhasználó – Felhasználókat, illetve a bejegyzéseket is karbantartó jogkör.
+
+- Anonymous – az oldalt megnyitó felhasználó 
+- Regisztrált felhasználó - hozzáfér, láthat olyan bejegyzéseket, amit az anonymous felhasználó nem. 
+- Szerkesztő felhasználó – Új bejegyzéseket tud létrehozni, illetve szerkeszteni a saját bejegyzéseit.
+- Adminisztrátor felhasználó – Felhasználókat, illetve a bejegyzéseket is karbantartó jogkör.
 
 Bejegyzés létrehozása csak szerkesztő, illetve adminisztrátori jogkörrel hozható létre. A bejegyzések felépítése:
-•	Cím
-•	Rövid leírás
-•	Tartalom
-•	Dátum
-•	Szerző
+
+- Cím
+- Rövid leírás
+-	Tartalom
+-	Dátum
+-	Szerző
 
 A bejegyzéshez tartozik egy kapcsoló, amivel szabályozni lehet, hogy a bejegyzés megjelenjen e vagy nem az oldalon ezzel biztosítva a szerkesztő felé a piszkozat funkciót. 
 •	Megjelenik az oldalon (publikus vagy piszkozat)
 
 ## Tervezés
-•	Weboldal képernyőterveinek az elkészítése, UX/UI
-•	Adatbázis tervezése, illetve adatmodellek felépítése, UDM
+-	Weboldal képernyőterveinek az elkészítése, UX/UI
+-	Adatbázis tervezése, illetve adatmodellek felépítése, UDM
 
 ## Implementáció
-•	Alap keretrendszer felépítése
-•	Regisztráció
-•	Szerepkörök szerinti működés beépítése
-•	Karbantartó felület a felhasználókhoz
-•	Hírfelület kialakítása (Publikus, nem publikus megjelenítés)
-•	Karbantartó felület kialakítása a bejegyzésekhez
+-	Alap keretrendszer felépítése
+-	Regisztráció
+-	Szerepkörök szerinti működés beépítése
+-	Karbantartó felület a felhasználókhoz
+-	Hírfelület kialakítása (Publikus, nem publikus megjelenítés)
+-	Karbantartó felület kialakítása a bejegyzésekhez
 
 ## Teszt
 Modulonkénti manuális teszt, folyamatosan.
