@@ -6,4 +6,5 @@ Regisztráció
 
 @section('content')
   <h1>Regisztráció</h1>
+  <p>Regisztráció</p>
 @endsection
