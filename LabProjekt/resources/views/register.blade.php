@@ -5,6 +5,5 @@ Regisztráció
 @endsection
 
 @section('content')
-  <h1>Üdvözöllek a regisztráció oldalon!</h1>
-  <p>Regisztráció.</p>
+  <h1>Regisztráció</h1>
 @endsection
