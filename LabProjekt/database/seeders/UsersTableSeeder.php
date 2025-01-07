@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'felhasználónév' => 'Admin User',
+                'username' => 'Admin User',
                 'email' => 'admin@example.com',
                 'password' => Hash::make('password'), // Jelszó hash-elése
                 'role' => 'admin'
