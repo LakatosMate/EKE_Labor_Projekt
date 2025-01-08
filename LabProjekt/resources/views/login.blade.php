@@ -19,5 +19,10 @@ Bejelentkezés
         </div>
         <button type="submit" class="btn btn-primary">Bejelentkezés</button>
     </form>
+    @if (Session::has('success'))
+        <div class="mt-3">
+            <span class="alert alert-success p-2">{{Session::get('success')}}</span>
+        </div>
+    @endif
 </div>
 @endsection

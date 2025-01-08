@@ -24,7 +24,7 @@
         <a class="nav-link"  href="{{ route('login') }}">Bejelentkezés</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('regist') }}">Regisztráció</a>
+        <a class="nav-link" href="{{ route('register') }}">Regisztráció</a>
       </li>
     </ul>
   </div>
