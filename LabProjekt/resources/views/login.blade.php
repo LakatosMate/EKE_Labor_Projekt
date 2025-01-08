@@ -7,7 +7,7 @@ Bejelentkezés
 @section('content')
  <div class="container">
     <h2>Bejelentkezés</h2>
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST"  action="{{ route('logging_in') }}">
         @csrf
         <div class="mb-3">
             <label for="username" class="form-label">Felhasználó név</label>
