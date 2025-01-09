@@ -11,4 +11,10 @@ Route::post('logging_in',[AuthController::class,'logging_in'])->name('logging_in
 Route::get('register',[RegistrationController::class,'register'])->name('register');
 Route::post('registration',[RegistrationController::class,'registration'])->name('registration');
 
-//Middlaware behozatala.
+
+
+Route::get('dashboard', function () {
+    return view('dashboard');
+})->name('dashboard')->middleware('auth');
+
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
