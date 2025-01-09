@@ -27,6 +27,8 @@ class AuthController extends Controller
             return redirect()->route('dashboard');
         }
 
+
+
         return back()->withErrors(['username' => 'Invalid credentials']);
     }
 
@@ -34,5 +36,15 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->route('login');
+    }
+
+    public function pwRequest(){
+        return view('pwreset');
+
+    }
+
+    public function pwReset(Request $request){
+
+        echo "Jelszó megváltoztatás logic";
     }
 }

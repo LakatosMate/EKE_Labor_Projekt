@@ -17,8 +17,16 @@ Bejelentkezés
             <label for="password" class="form-label">Jelszó</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Bejelentkezés</button>
+        <div class="d-inline">
+            <button type="submit" class="btn btn-primary">Bejelentkezés</button>
+        </div>
+
     </form>
+
+    <div class="mt-3 d-inline">
+        <a href="{{ route('pwrequest') }}"> Elfelejtett jelszó? </a>
+    </div>
+
     @if (Session::has('success'))
         <div class="mt-3">
             <span class="alert alert-success p-2">{{Session::get('success')}}</span>
@@ -26,3 +34,5 @@ Bejelentkezés
     @endif
 </div>
 @endsection
+
+
