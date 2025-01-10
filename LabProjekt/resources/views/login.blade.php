@@ -17,15 +17,10 @@ Bejelentkezés
             <label for="password" class="form-label">Jelszó</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <div class="d-inline">
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary">Bejelentkezés</button>
         </div>
-
     </form>
-
-    <div class="mt-3 d-inline">
-        <a href="{{ route('pwrequest') }}"> Elfelejtett jelszó? </a>
-    </div>
 
     @if (Session::has('success'))
         <div class="mt-3">

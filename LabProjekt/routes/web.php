@@ -19,7 +19,3 @@ Route::get('dashboard', function () {
 Route::get('profile',[ProfileController::class,'profile'])->name('profile')->middleware('auth');
 
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('pwrequest', [AuthController::class,'pwRequest'])->name('pwrequest');
-
-Route::post('pwReset', [AuthController::class,'pwReset'])->name('pwReset');
