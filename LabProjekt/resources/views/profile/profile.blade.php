@@ -11,7 +11,7 @@ Profilom
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle" width="150px" src="{{ asset('storage/images/dummy-profile-pic-300x300.png') }}" alt="Profilkép">
+                    <img class="rounded-circle" width="150px" src="{{ asset('images/profile_avatar_placeholder.png') }}" alt="Profilkép">
                     <span class="font-weight-bold">{{ Auth::user()->username }}</span>
                     <span class="text-black-50">{{ Auth::user()->email }}</span>
                     <span class="font-weight-bold">Jogkör: {{ Auth::user()->role }}</span>
