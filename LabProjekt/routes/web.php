@@ -19,3 +19,5 @@ Route::get('dashboard', function () {
 Route::get('profile',[ProfileController::class,'profile'])->name('profile')->middleware('auth');
 
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('profile-picture', [ProfileController::class, 'updateProfilePicture'])->name('profile.picture.update');
