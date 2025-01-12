@@ -22,6 +22,19 @@ class AuthController extends Controller
 
     public function logging_in(Request $request)
     {
-        echo "Bejelentkezési logika";
+
+         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            return redirect()->route('dashboard');
+        }
+
+
+
+        return back()->withErrors(['username' => 'Invalid credentials']);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

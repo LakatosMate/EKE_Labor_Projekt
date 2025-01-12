@@ -17,8 +17,11 @@ Bejelentkezés
             <label for="password" class="form-label">Jelszó</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Bejelentkezés</button>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Bejelentkezés</button>
+        </div>
     </form>
+
     @if (Session::has('success'))
         <div class="mt-3">
             <span class="alert alert-success p-2">{{Session::get('success')}}</span>
@@ -26,3 +29,5 @@ Bejelentkezés
     @endif
 </div>
 @endsection
+
+
