@@ -54,7 +54,16 @@ A bejegyzéshez tartozik egy kapcsoló, amivel szabályozni lehet, hogy a bejegy
 -	Karbantartó felület kialakítása a bejegyzésekhez
 
 ## Teszt
-Modulonkénti manuális teszt, folyamatosan.
+Eseti manuális teszt, folyamatosan. Lásd Táblázat:
+| Eset | Teszt leírása | Elvárás | Státusz | Tesztelő | Megjegyzés |
+| --- | --- | --- | --- | --- | --- |
+| Regisztráció | Regisztráció a honlapról | Felhasználó regisztrálása az adatbázisba. Minden kötelező adat ellenőrzése a regisztrációs ürlapon. Sikeres vagy sikertelen regisztráció után a felhasználó kapjon értesítést. | | |
+| Bejelentkezés | Bejelentkezés a honlapról | A regisztrált felhasználó autentikálása és beléptetése a honlapra. Sikeres autentikálás után átírányítás az inrányítópult-ra. (Dashboard) | | |
+| Authorizáció | Kijelentkezés | Kijelentkezés menü csak a bejelentkezett felhasználóknak érhető el. | | |
+| Authorizáció | Profilom | Profilom menü csak a bejelentkezett felhasználóknak érhető el. | | |
+| Authorizáció | Profilom | Oldal csak a bejelentkezett felhasználó érheti el. | | |
+| Profilom | Profilkép szerkesztése | Kép, avatar feltőltése a felhasználó profiljához. Felhasználó kiválaszt egy képet és azt feltölti a rendszerben, ha sikeres a profil alatt látható a képe és kap értesítést. | | |
+| Profilom | Jelszó megváltoztatása | A felhasználó meg tudja változtatni a jelszavát. Régi jelszó illetve az új jelszó megadásával. Amennyiben sikeres a jelszó megváltoztatás azt jelezzük a felhasználónak. | | |
 
 ## Rendszerátadás és üzemeltetés, karbantartás
 Az elkészült rendszer átadás-átvétele után megkezdődik a honlap publikálása az internetre, valamint folyamatos üzemeltetése. A tartalom karbantartásában részt vevő személy(ek)nek, a szükséges ismeretek megszerzéséhez oktatást tartunk illetve dokumentációt biztosítunk.
