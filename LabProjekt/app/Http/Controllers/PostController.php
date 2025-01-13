@@ -11,15 +11,12 @@ class PostController extends Controller
     // Bejegyzések listázása
     public function index(Request $request)
     {
-        // Olvassuk ki az 'items' paramétert, alapértelmezés 10
         $itemsPerPage = $request->query('items', 10);
 
-        // Érvényes elemszámok: 10, 20, 50
         if (!in_array($itemsPerPage, [10, 20, 50])) {
             $itemsPerPage = 10;
         }
 
-        // Pagináció az 'items' alapján
         $posts = Post::with('author')->paginate($itemsPerPage);
 
         return view('post.index', compact('posts'));
@@ -28,7 +25,7 @@ class PostController extends Controller
     // Új bejegyzés létrehozása (űrlap megjelenítése)
     public function create()
     {
-        $users = User::all(); // Minden felhasználó lekérése
+        $users = User::all();
         return view('post.create', compact('users'));
     }
 
@@ -40,26 +37,22 @@ class PostController extends Controller
             'description' => 'nullable|string',
             'image_path' => 'nullable|image',
             'author_id' => 'required|exists:users,id',
-            'is_published' => 'required|boolean',
+            'is_published' => 'nullable|boolean',
             'date' => 'required|date',
         ]);
 
-        // Kép feltöltése (ha van)
         $imagePath = null;
         if ($request->hasFile('image_path')) {
-            $image = $request->file('image_path');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('images'), $imageName);
-            $imagePath = 'images/' . $imageName;
+            $imagePath = 'images/' . $request->file('image_path')->getClientOriginalName();
+            $request->file('image_path')->move(public_path('images'), $imagePath);
         }
 
-        // Bejegyzés létrehozása
         Post::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'image_path' => $imagePath,
             'author_id' => $request->input('author_id'),
-            'is_published' => $request->input('is_published'),
+            'is_published' => $request->input('is_published', false),
             'date' => $request->input('date'),
         ]);
 
@@ -67,40 +60,39 @@ class PostController extends Controller
     }
 
     // Bejegyzés szerkesztése (űrlap megjelenítése)
-    public function edit(Post $post)
+    public function edit($id)
     {
-        $users = User::all(); // Felhasználók a szerkesztéshez
+        $post = Post::findOrFail($id);
+        $users = User::all();
         return view('post.edit', compact('post', 'users'));
     }
 
     // Bejegyzés frissítése
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image',
             'author_id' => 'required|exists:users,id',
-            'is_published' => 'required|boolean',
+            'is_published' => 'nullable|boolean',
             'date' => 'required|date',
         ]);
 
-        // Kép frissítése (ha van új kép)
-        $imagePath = $post->image_path;
+        $post = Post::findOrFail($id);
+
+        $imagePath = $post->image_path; // Eredeti kép megőrzése
         if ($request->hasFile('image_path')) {
-            $image = $request->file('image_path');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('images'), $imageName);
-            $imagePath = 'images/' . $imageName;
+            $imagePath = 'images/' . $request->file('image_path')->getClientOriginalName();
+            $request->file('image_path')->move(public_path('images'), $imagePath);
         }
 
-        // Bejegyzés frissítése
         $post->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'image_path' => $imagePath,
             'author_id' => $request->input('author_id'),
-            'is_published' => $request->input('is_published'),
+            'is_published' => $request->input('is_published', false),
             'date' => $request->input('date'),
         ]);
 
@@ -108,10 +100,13 @@ class PostController extends Controller
     }
 
     // Bejegyzés törlése
-    public function destroy(Post $post)
+    public function destroy($id)
     {
+        $post = Post::findOrFail($id);
+        if ($post->image_path && file_exists(public_path($post->image_path))) {
+            unlink(public_path($post->image_path));
+        }
         $post->delete();
-
         return redirect()->route('post.index')->with('success', 'Bejegyzés sikeresen törölve.');
     }
 }
