@@ -2,7 +2,7 @@
 
 @section('content')
 <main>
-    <h1>Új bejegyzés létrehozása</h1>
+    <h1 style="margin-bottom: 20px; font-size: 1.5em; font-weight: bold;">Új bejegyzés létrehozása</h1>
     <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data" style="background: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
         @csrf
         <div style="margin-bottom: 15px;">
