@@ -80,20 +80,20 @@
     }
 
     .btn-edit {
-        background-color: #007bff; /* Kék szín az Edit gombhoz */
+        background-color: #007bff;
         margin-right: 5px;
     }
 
     .btn-edit:hover {
-        background-color: #0056b3; /* Sötétebb kék hover állapot */
+        background-color: #0056b3;
     }
 
     .btn-delete {
-        background-color: #dc3545; /* Piros szín a Delete gombhoz */
+        background-color: #dc3545;
     }
 
     .btn-delete:hover {
-        background-color: #a71d2a; /* Sötétebb piros hover állapot */
+        background-color: #a71d2a;
     }
 
     .pagination-container {
@@ -191,7 +191,7 @@
         <tr>
             <td>
                 @if ($post->image_path)
-                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="Kép">
+                    <img src="{{ asset($post->image_path) }}" alt="Kép">
                 @else
                     Nincs kép
                 @endif
