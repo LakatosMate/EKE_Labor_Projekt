@@ -45,9 +45,13 @@ class PostController extends Controller
         ]);
 
         // Kép feltöltése (ha van)
-        $imagePath = $request->file('image_path') 
-            ? $request->file('image_path')->store('images', 'public') 
-            : null;
+        $imagePath = null;
+        if ($request->hasFile('image_path')) {
+            $image = $request->file('image_path');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $imagePath = 'images/' . $imageName;
+        }
 
         // Bejegyzés létrehozása
         Post::create([
@@ -82,9 +86,13 @@ class PostController extends Controller
         ]);
 
         // Kép frissítése (ha van új kép)
-        $imagePath = $request->file('image_path') 
-            ? $request->file('image_path')->store('images', 'public') 
-            : $post->image_path;
+        $imagePath = $post->image_path;
+        if ($request->hasFile('image_path')) {
+            $image = $request->file('image_path');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $imagePath = 'images/' . $imageName;
+        }
 
         // Bejegyzés frissítése
         $post->update([
