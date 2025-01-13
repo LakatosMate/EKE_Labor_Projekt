@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -28,5 +29,21 @@ class ProfileController extends Controller
         $user->save();
 
         return back()->with('success', 'Profilkép sikeresen frissítve lett!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        // Validáció
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        // Jelszó frissítése
+        $user = Auth::user();
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return back()->with('success', 'Jelszó sikeresen megváltoztatva!');
     }
 }

@@ -18,6 +18,7 @@ Profilom
                     <span> </span>
                 </div>
             </div>
+        
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -29,13 +30,47 @@ Profilom
                         @endif 
                     </div>
 
+                    <hr>
+
                     <div class="row mt-3">
+                        <h5 class="mb-3">Profilkép megváltoztatása</h5>
                         <form action="{{ route('profile.picture.update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="input-group">
                                 <input type="file" class="form-control" name="profile_picture" id="profile_picture" aria-label="Profilkép feltöltése" required>
                                 <button class="btn btn-outline-secondary" type="submit">Feltöltés</button>
                             </div>
+                        </form>
+                    </div>
+
+                    <hr>
+
+                    <div class="row mt-3">
+                        <h5>Jelszó megváltoztatása</h5>
+                        <form method="POST" action="{{ route('password.update') }}">
+                            @csrf
+                            <div class="form-group">
+                                <label class="my-2" for="current_password">Jelenlegi jelszó</label>
+                                <input id="current_password" type="password" name="current_password" class="form-control @error('current_password') is-invalid @enderror" required>
+                                @error('current_password')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                    
+                            <div class="form-group">
+                                <label class="my-2" for="password">Új jelszó</label>
+                                <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                    
+                            <div class="form-group">
+                                <label class="my-2" for="password_confirmation">Új jelszó megerősítése</label>
+                                <input id="password_confirmation" type="password" name="password_confirmation" class="form-control" required>
+                            </div>
+                    
+                            <button type="submit" class="btn btn-primary mt-3">Jelszó megváltoztatása</button>
                         </form>
                     </div>
                     
