@@ -175,15 +175,24 @@ Kezdőlap
 
   <h2>Bejegyzések</h2>
   <hr>
-
+@foreach ($posts as $post)
 <div class="card mb-3">
   <img class="card-img-top" src=".../100px180/" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <h5 class="card-title">{{ $post->title}}</h5>
+    <p class="card-text"> {{ $post->description}} </p>
+   <div class="d-flex justify-content-between align-items-center">
+
+    @if (!empty($post->author->name))
+      <p class="card-text mb-0"><small class="text-muted">{{$post->author->role}}</small></p>
+      @else
+        <p class="card-text mb-0"><small class="text-muted">{{$post->author->full_name}}</small></p>
+      @endif
+      <a href="#" class="btn btn-secondary">Elolvasom</a>
+    </div>
   </div>
 </div>
+@endforeach
 
 
   @if (Session::has('fail'))
