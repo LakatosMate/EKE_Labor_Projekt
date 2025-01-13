@@ -177,7 +177,12 @@ Kezdőlap
   <hr>
 @foreach ($posts as $post)
 <div class="card mb-3">
-  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    @if ($post->image_path)
+                    <img src="{{ asset($post->image_path) }}" alt="Kép">
+                @else
+                    Nincs kép
+                @endif
+
   <div class="card-body">
     <h5 class="card-title">{{ $post->title}}</h5>
     <p class="card-text"> {{ $post->description}} </p>
