@@ -24,11 +24,6 @@
       <li class="nav-item"><a class="nav-link" href="/profile">Profilom</a></li>
  @if (Auth::check() && Auth::user()->role === 'admin')
     <li  class="nav-item"><a class="nav-link" href="/admin/users">Felhasználók kezelése</a></li>
-
-
-
-    </li>
-
  @endif
 
       <li class="nav-item">
