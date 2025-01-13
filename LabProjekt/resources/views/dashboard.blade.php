@@ -17,12 +17,6 @@
         <p>Legyen szép napod!</p>
     </div>
 
-    @if (Auth::check() && Auth::user()->role === 'admin')
-    <nav class="navbar">
-        <form class="form-inline">
-            <a href="admin/users" class="btn btn-secondary" role="button">Felhasználók kezelése</a>
-        </form>
-      </nav>
-    @endif
+
 </div>
 @endsection

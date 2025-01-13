@@ -20,8 +20,16 @@
     </button>
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
       @auth
-      <li class="nav-item"><a class="nav-link" href="/dashboard">Irányítópult</a></li>
+      <li ><a class="nav-link" href="/dashboard">Irányítópult</a></li>
       <li class="nav-item"><a class="nav-link" href="/profile">Profilom</a></li>
+ @if (Auth::check() && Auth::user()->role === 'admin')
+    <li  class="nav-item"><a class="nav-link" href="/admin/users">Felhasználók kezelése</a></li>
+
+
+
+    </li>
+
+ @endif
 
       <li class="nav-item">
           <form action="{{ route('logout') }}" method="POST">
