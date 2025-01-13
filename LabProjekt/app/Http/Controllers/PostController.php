@@ -9,16 +9,26 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     // Bejegyzések listázása
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('szerző')->get();
+        // Olvassuk ki az 'items' paramétert, alapértelmezés 10
+        $itemsPerPage = $request->query('items', 10);
+
+        // Érvényes elemszámok: 10, 20, 50
+        if (!in_array($itemsPerPage, [10, 20, 50])) {
+            $itemsPerPage = 10;
+        }
+
+        // Pagináció az 'items' alapján
+        $posts = Post::with('author')->paginate($itemsPerPage);
+
         return view('post.index', compact('posts'));
     }
 
     // Új bejegyzés létrehozása (űrlap megjelenítése)
     public function create()
     {
-        $users = User::all();
+        $users = User::all(); // Minden felhasználó lekérése
         return view('post.create', compact('users'));
     }
 
@@ -26,23 +36,27 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cím' => 'required|string|max:255',
-            'leirás' => 'nullable|string',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'image_path' => 'nullable|image',
-            'szerző_id' => 'required|exists:users,id',
-            'is_publikált' => 'required|boolean',
-            'dátum' => 'required|date',
+            'author_id' => 'required|exists:users,id',
+            'is_published' => 'required|boolean',
+            'date' => 'required|date',
         ]);
 
-        $imagePath = $request->file('image_path') ? $request->file('image_path')->store('images', 'public') : null;
+        // Kép feltöltése (ha van)
+        $imagePath = $request->file('image_path') 
+            ? $request->file('image_path')->store('images', 'public') 
+            : null;
 
+        // Bejegyzés létrehozása
         Post::create([
-            'cím' => $request->input('cím'),
-            'leirás' => $request->input('leirás'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
             'image_path' => $imagePath,
-            'szerző_id' => $request->input('szerző_id'),
-            'is_publikált' => $request->input('is_publikált'),
-            'dátum' => $request->input('dátum'),
+            'author_id' => $request->input('author_id'),
+            'is_published' => $request->input('is_published'),
+            'date' => $request->input('date'),
         ]);
 
         return redirect()->route('post.index')->with('success', 'Bejegyzés sikeresen létrehozva.');
@@ -51,7 +65,7 @@ class PostController extends Controller
     // Bejegyzés szerkesztése (űrlap megjelenítése)
     public function edit(Post $post)
     {
-        $users = User::all();
+        $users = User::all(); // Felhasználók a szerkesztéshez
         return view('post.edit', compact('post', 'users'));
     }
 
@@ -59,23 +73,27 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'cím' => 'required|string|max:255',
-            'leirás' => 'nullable|string',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'image_path' => 'nullable|image',
-            'szerző_id' => 'required|exists:users,id',
-            'is_publikált' => 'required|boolean',
-            'dátum' => 'required|date',
+            'author_id' => 'required|exists:users,id',
+            'is_published' => 'required|boolean',
+            'date' => 'required|date',
         ]);
 
-        $imagePath = $request->file('image_path') ? $request->file('image_path')->store('images', 'public') : $post->image_path;
+        // Kép frissítése (ha van új kép)
+        $imagePath = $request->file('image_path') 
+            ? $request->file('image_path')->store('images', 'public') 
+            : $post->image_path;
 
+        // Bejegyzés frissítése
         $post->update([
-            'cím' => $request->input('cím'),
-            'leirás' => $request->input('leirás'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
             'image_path' => $imagePath,
-            'szerző_id' => $request->input('szerző_id'),
-            'is_publikált' => $request->input('is_publikált'),
-            'dátum' => $request->input('dátum'),
+            'author_id' => $request->input('author_id'),
+            'is_published' => $request->input('is_published'),
+            'date' => $request->input('date'),
         ]);
 
         return redirect()->route('post.index')->with('success', 'Bejegyzés sikeresen frissítve.');
