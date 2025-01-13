@@ -7,7 +7,7 @@ use App\Http\Controllers\RegistrationController;
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('login',[AuthController::class,'login'])->name('login');
@@ -28,4 +28,16 @@ Route::get('profile',[ProfileController::class,'profile'])->name('profile')->mid
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('profile-picture', [ProfileController::class, 'updateProfilePicture'])->name('profile.picture.update');
+
+
+
+
+Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users.index');
+Route::get('admin/users/{user}/edit', [AdminController::class, 'edit'])->name('admin.users.edit');
+Route::post('admin/users/{user}', [AdminController::class, 'update'])->name('admin.users.update');
+Route::delete('admin/users/{user}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
+
+Route::post('password-change', [ProfileController::class, 'updatePassword'])->name('password.update');
+Route::post('/profile/fullname/update', [ProfileController::class, 'updateFullName'])->name('profile.fullname.update');
+Route::get('profile-picture-delete', [ProfileController::class, 'deleteProfilePicture'])->name('profile.picture.delete');
 

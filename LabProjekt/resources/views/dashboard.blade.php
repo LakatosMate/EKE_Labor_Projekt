@@ -16,5 +16,7 @@
         @endif
         <p>Legyen szép napod!</p>
     </div>
+
+
 </div>
 @endsection

@@ -57,13 +57,16 @@ A bejegyzéshez tartozik egy kapcsoló, amivel szabályozni lehet, hogy a bejegy
 Eseti manuális teszt, folyamatosan. Hiba esetnén rögzíteni a hibaanalízis táblában.
 | Eset | Teszt leírása | Elvárás | Státusz | Tesztelő |
 | --- | --- | --- | --- | --- |
-| Regisztráció | Regisztráció a honlapról | Felhasználó regisztrálása az adatbázisba. Minden kötelező adat ellenőrzése a regisztrációs ürlapon. Sikeres vagy sikertelen regisztráció után a felhasználó kapjon értesítést. | |
-| Bejelentkezés | Bejelentkezés a honlapról | A regisztrált felhasználó autentikálása és beléptetése a honlapra. Sikeres autentikálás után átírányítás az inrányítópult-ra. (Dashboard) | |
-| Authorizáció | Kijelentkezés | Kijelentkezés menü csak a bejelentkezett felhasználóknak érhető el. | |
-| Authorizáció | Profilom | Profilom menü csak a bejelentkezett felhasználóknak érhető el. | |
-| Authorizáció | Profilom | Oldal csak a bejelentkezett felhasználó érheti el. | |
-| Profilom | Profilkép szerkesztése | Kép, avatar feltőltése a felhasználó profiljához. Felhasználó kiválaszt egy képet és azt feltölti a rendszerben, ha sikeres a profil alatt látható a képe és kap értesítést. | |
-| Profilom | Jelszó megváltoztatása | A felhasználó meg tudja változtatni a jelszavát. Régi jelszó illetve az új jelszó megadásával. Amennyiben sikeres a jelszó megváltoztatás azt jelezzük a felhasználónak. | |
+| Regisztráció | Regisztráció a honlapról | Felhasználó regisztrálása az adatbázisba. Minden kötelező adat ellenőrzése a regisztrációs ürlapon. Sikeres vagy sikertelen regisztráció után a felhasználó kapjon értesítést. |  | |
+| Bejelentkezés | Bejelentkezés a honlapról | A regisztrált felhasználó autentikálása és beléptetése a honlapra. Sikeres autentikálás után átírányítás az inrányítópult-ra. (Dashboard) | | |
+| Authorizáció | Kijelentkezés | Kijelentkezés menü csak a bejelentkezett felhasználóknak érhető el. | OK | SF |
+| Authorizáció | Profilom | Profilom menü csak a bejelentkezett felhasználóknak érhető el. | OK | SF |
+| Authorizáció | Profilom | Oldal csak a bejelentkezett felhasználó érheti el. | OK | SF |
+| Profilom | Profilkép szerkesztése | Kép, avatar feltőltése a felhasználó profiljához. Felhasználó kiválaszt egy képet és azt feltölti a rendszerben, ha sikeres a profil alatt látható a képe és kap értesítést. | OK | SF |
+| Profilom | Jelszó megváltoztatása | A felhasználó meg tudja változtatni a jelszavát. Régi jelszó illetve az új jelszó megadásával. Amennyiben sikeres a jelszó megváltoztatás azt jelezzük a felhasználónak. | OK| SF |
+| Admin | Felhasználó kezelés | Az admin kilistázva látja a felhasználókat és tudja módosítani a felhasználók nevét, emailjét, szerepkörét illetve tudja törölni is a felhasználókat. | OK | MM |
+| Profilom | Profilkép törlése | felhasználó álltal beállított kép törlése | OK | SF |
+| Profilom | Teljes név beállítás | A felhasználó a profiljában megadhatja a teljes nevét| OK | MM |
 
 ## Rendszerátadás és üzemeltetés, karbantartás
 Az elkészült rendszer átadás-átvétele után megkezdődik a honlap publikálása az internetre, valamint folyamatos üzemeltetése. A tartalom karbantartásában részt vevő személy(ek)nek, a szükséges ismeretek megszerzéséhez oktatást tartunk illetve dokumentációt biztosítunk.

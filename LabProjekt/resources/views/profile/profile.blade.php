@@ -12,12 +12,14 @@ Profilom
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mb-2" width="150px" src="{{ auth()->user()->profile_picture ? asset(auth()->user()->profile_picture) : asset('images/profile_avatar_placeholder.png') }}" alt="Profilkép">
+                    <a href="profile-picture-delete" class="btn btn-secondary" role="button">Profilkép törlése</a>
                     <span class="font-weight-bold">{{ Auth::user()->username }}</span>
                     <span class="text-black-50">{{ Auth::user()->email }}</span>
                     <span class="font-weight-bold">Jogkör: {{ Auth::user()->role }}</span>
                     <span> </span>
                 </div>
             </div>
+        
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -29,7 +31,10 @@ Profilom
                         @endif 
                     </div>
 
+                    <hr>
+
                     <div class="row mt-3">
+                        <h5 class="mb-3">Profilkép megváltoztatása</h5>
                         <form action="{{ route('profile.picture.update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="input-group">
@@ -38,12 +43,63 @@ Profilom
                             </div>
                         </form>
                     </div>
+                    <hr>
+
+                     <div class="row mt-3">
+                        <h5 class="mb-3">Teljes név megváltoztatása</h5>
+                        <form action="{{ route('profile.fullname.update') }}" method="POST">
+                            @csrf
+                             <div class="input-group">
+                                <input id="full_name" type="text" name="full_name" class="form-control @error('full_name') is-invalid @enderror" value="{{ old('full_name', auth()->user()->full_name) }}">
+                                @error('full_name')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                                <button type="submit" class="btn btn-outline-secondary">Mentés</button>
+                                </div>
+                        </form>
+                    </div>
+                    <hr>
+
+                    <div class="row mt-3">
+                        <h5>Jelszó megváltoztatása</h5>
+                        <form method="POST" action="{{ route('password.update') }}">
+                            @csrf
+                            <div class="form-group">
+                                <label class="my-2" for="current_password">Jelenlegi jelszó</label>
+                                <input id="current_password" type="password" name="current_password" class="form-control @error('current_password') is-invalid @enderror" required>
+                                @error('current_password')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                    
+                            <div class="form-group">
+                                <label class="my-2" for="password">Új jelszó</label>
+                                <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
+                            </div>
+                    
+                            <div class="form-group">
+                                <label class="my-2" for="password_confirmation">Új jelszó megerősítése</label>
+                                <input id="password_confirmation" type="password" name="password_confirmation" class="form-control" required>
+                            </div>
+                    
+                            <button type="submit" class="btn btn-primary mt-3">Jelszó megváltoztatása</button>
+                        </form>
+                    </div>
                     
                     @if(session('success'))
                         <div class="mt-3">
                             <span class="alert alert-success p-2">{{Session::get('success')}}</span>
                         </div>
-                    @endif                  
+                    @endif
+                    
+                    @if(session('error'))
+                        <div class="mt-3">
+                            <span class="alert alert-danger p-2">{{Session::get('error')}}</span>
+                        </div>
+                    @endif  
                 </div>
             </div>
         </div>
