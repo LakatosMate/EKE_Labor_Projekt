@@ -83,5 +83,6 @@ Az elkészült rendszer átadás-átvétele után megkezdődik a honlap publiká
 Esetleges hibák feltárása és ezeknek a jelzése. (Feladat rögzítése a Backlogban felelős megállapítása)
 | - | Eset | Hiba leírása | Felelős | Státusz |
 | --- | --- | --- | --- | --- |
-| 1 |  |  |  |  |
+| 1 | Bejegyzés | Bejegyzés képei rossz mappába kerületek így gitnore lett |  FÁ | Done  |
+| 2 | Bejegyzés | Csak a publikált bejegyzéseket engedte hozzáadni (backend részhez) |  FÁ | Done  |
 
