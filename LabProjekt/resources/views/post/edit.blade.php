@@ -2,10 +2,11 @@
 
 @section('content')
 <main>
-    <h1>Bejegyzés szerkesztése</h1>
+    <h1 style="margin-bottom: 20px; font-size: 1.5em; font-weight: bold;">Bejegyzés szerkesztése</h1>
     <form action="{{ route('post.update', $post->id) }}" method="POST" enctype="multipart/form-data" style="background: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
         @csrf
         @method('PUT')
+
         <div style="margin-bottom: 15px;">
             <label for="title" style="display: block; font-weight: bold; margin-bottom: 5px;">Cím:</label>
             <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
