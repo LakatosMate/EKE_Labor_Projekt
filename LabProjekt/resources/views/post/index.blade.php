@@ -37,67 +37,119 @@
         margin-bottom: 20px;
     }
 
-    .post {
-        display: flex;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
         background: #fff;
-        padding: 15px;
-        margin-bottom: 15px;
+    }
+
+    table th, table td {
         border: 1px solid #ddd;
-        border-radius: 5px;
+        padding: 10px;
+        text-align: left;
     }
 
-    .post img {
-        width: 80px;
-        height: 80px;
-        background-color: #ccc;
-        border-radius: 5px;
-        margin-right: 15px;
+    table th {
+        background-color: #f8f8f8;
     }
 
-    .post-content {
-        flex: 1;
+    table tr:hover {
+        background-color: #f1f1f1;
     }
 
-    .post-content h2 {
-        margin: 0;
-        font-size: 1.2em;
-    }
-
-    .post-content p {
-        margin: 5px 0 10px;
-        color: #666;
-    }
-
-    .post-content .meta {
-        font-size: 0.9em;
-        color: #999;
-    }
-
-    .read-more {
+    a {
         text-decoration: none;
         color: #007bff;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 14px;
         font-weight: bold;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-edit {
+        background-color: #007bff; /* Kék szín az Edit gombhoz */
+        margin-right: 5px;
+    }
+
+    .btn-edit:hover {
+        background-color: #0056b3; /* Sötétebb kék hover állapot */
+    }
+
+    .btn-delete {
+        background-color: #dc3545; /* Piros szín a Delete gombhoz */
+    }
+
+    .btn-delete:hover {
+        background-color: #a71d2a; /* Sötétebb piros hover állapot */
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
     }
 
     .pagination {
         display: flex;
-        justify-content: center;
-        margin-top: 20px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
-    .pagination a {
-        text-decoration: none;
-        color: #333;
-        padding: 5px 10px;
-        margin: 0 5px;
-        border: 1px solid #ddd;
+    .pagination li {
+        margin: 0 2px;
+    }
+
+    .pagination a,
+    .pagination span {
+        display: inline-block;
+        padding: 5px 8px;
+        font-size: 12px;
         border-radius: 3px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        color: #333;
+        text-decoration: none;
+        transition: all 0.3s ease;
     }
 
-    .pagination a.active {
+    .pagination a:hover {
         background-color: #007bff;
         color: #fff;
         border-color: #007bff;
+    }
+
+    .pagination .active span {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+
+    .pagination .disabled span {
+        color: #ddd;
+        cursor: not-allowed;
+    }
+
+    .pagination li:first-child {
+        margin-right: auto;
+    }
+
+    .pagination li:last-child {
+        margin-left: auto;
     }
 
     .items-per-page {
@@ -108,18 +160,25 @@
     .items-per-page select {
         padding: 5px;
     }
+
+    img {
+        max-width: 100px;
+        height: auto;
+        border-radius: 5px;
+    }
 </style>
 
 <h1>Bejegyzések</h1>
-<a href="{{ route('post.create') }}">Új bejegyzés</a>
+<a href="{{ route('post.create') }}" style="display: inline-block; margin-bottom: 20px; background: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 5px;">Új bejegyzés</a>
 
 @if ($message = Session::get('success'))
-    <p>{{ $message }}</p>
+    <p style="background: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 5px;">{{ $message }}</p>
 @endif
 
 <table>
     <thead>
         <tr>
+            <th>Kép</th>
             <th>Cím</th>
             <th>Leírás</th>
             <th>Szerző</th>
@@ -130,16 +189,23 @@
     <tbody>
         @foreach ($posts as $post)
         <tr>
-            <td>{{ $post->cím }}</td>
-            <td>{{ $post->leirás }}</td>
-            <td>{{ $post->szerző->name }}</td>
-            <td>{{ $post->is_publikált ? 'Igen' : 'Nem' }}</td>
             <td>
-                <a href="{{ route('post.edit', $post->id) }}">Szerkesztés</a>
+                @if ($post->image_path)
+                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="Kép">
+                @else
+                    Nincs kép
+                @endif
+            </td>
+            <td>{{ $post->title }}</td>
+            <td>{{ $post->description }}</td>
+            <td>{{ $post->author->username }}</td>
+            <td>{{ $post->is_published ? 'Igen' : 'Nem' }}</td>
+            <td>
+                <a href="{{ route('post.edit', $post->id) }}" class="btn btn-edit">Szerkesztés</a>
                 <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Törlés</button>
+                    <button type="submit" class="btn btn-delete" onclick="return confirm('Biztosan törölni szeretnéd?')">Törlés</button>
                 </form>
             </td>
         </tr>
@@ -147,19 +213,16 @@
     </tbody>
 </table>
 
-<div class="pagination">
-    <a href="#" class="active">1</a>
-    <a href="#">2</a>
-    <span>&hellip;</span>
-    <a href="#">6</a>
+<div class="pagination-container">
+    {{ $posts->onEachSide(1)->links('pagination::bootstrap-4') }}
 </div>
 
 <div class="items-per-page">
-    <label for="items"></label>
-    <select id="items">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
+    <label for="items">Elemek száma oldalanként:</label>
+    <select id="items" onchange="window.location.href='?items=' + this.value">
+        <option value="10" {{ request('items') == 10 ? 'selected' : '' }}>10</option>
+        <option value="20" {{ request('items') == 20 ? 'selected' : '' }}>20</option>
+        <option value="50" {{ request('items') == 50 ? 'selected' : '' }}>50</option>
     </select>
 </div>
 @endsection
