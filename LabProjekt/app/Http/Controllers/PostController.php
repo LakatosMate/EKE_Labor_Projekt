@@ -40,11 +40,12 @@ class PostController extends Controller
             'description' => 'nullable|string',
             'image_path' => 'nullable|image',
             'author_id' => 'required|exists:users,id',
-            'is_published' => 'required|boolean',
+            'is_published' => 'boolean',
             'date' => 'required|date',
         ]);
 
         // Kép feltöltése (ha van)
+<<<<<<< HEAD
         $imagePath = null;
         if ($request->hasFile('image_path')) {
             $image = $request->file('image_path');
@@ -52,6 +53,11 @@ class PostController extends Controller
             $image->move(public_path('images'), $imageName);
             $imagePath = 'images/' . $imageName;
         }
+=======
+        $imagePath = $request->file('image_path')
+            ? $request->file('image_path')->store('images', 'public')
+            : null;
+>>>>>>> b12cb604e933d8b3a9fd79a408b0497f4d8fb284
 
         // Bejegyzés létrehozása
         Post::create([
@@ -86,6 +92,7 @@ class PostController extends Controller
         ]);
 
         // Kép frissítése (ha van új kép)
+<<<<<<< HEAD
         $imagePath = $post->image_path;
         if ($request->hasFile('image_path')) {
             $image = $request->file('image_path');
@@ -93,6 +100,11 @@ class PostController extends Controller
             $image->move(public_path('images'), $imageName);
             $imagePath = 'images/' . $imageName;
         }
+=======
+        $imagePath = $request->file('image_path')
+            ? $request->file('image_path')->store('images', 'public')
+            : $post->image_path;
+>>>>>>> b12cb604e933d8b3a9fd79a408b0497f4d8fb284
 
         // Bejegyzés frissítése
         $post->update([

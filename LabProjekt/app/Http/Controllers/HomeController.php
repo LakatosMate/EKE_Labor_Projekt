@@ -13,7 +13,7 @@ class HomeController extends Controller
  public function index()
     {
 
-        $posts = Post::all();
+        $posts = Post::with('author')->where('is_published', true)->orderBy('date', 'asc')->get();
         return view('main', compact('posts'));
     }
 
