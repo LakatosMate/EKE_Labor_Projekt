@@ -67,6 +67,7 @@ Eseti manuális teszt, folyamatosan. Hiba esetnén rögzíteni a hibaanalízis t
 | Admin | Felhasználó kezelés | Az admin kilistázva látja a felhasználókat és tudja módosítani a felhasználók nevét, emailjét, szerepkörét illetve tudja törölni is a felhasználókat. | OK | MM |
 | Profilom | Profilkép törlése | felhasználó álltal beállított kép törlése | OK | SF |
 | Profilom | Teljes név beállítás | A felhasználó a profiljában megadhatja a teljes nevét| OK | MM |
+| Bejegyzés | Kép megjelenítés | nem látszódnak a képek push után| NOK| FÁ |
 
 ## Rendszerátadás és üzemeltetés, karbantartás
 Az elkészült rendszer átadás-átvétele után megkezdődik a honlap publikálása az internetre, valamint folyamatos üzemeltetése. A tartalom karbantartásában részt vevő személy(ek)nek, a szükséges ismeretek megszerzéséhez oktatást tartunk illetve dokumentációt biztosítunk.
