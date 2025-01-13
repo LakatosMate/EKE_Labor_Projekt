@@ -188,10 +188,10 @@ Kezdőlap
     <p class="card-text"> {{ $post->description}} </p>
    <div class="d-flex justify-content-between align-items-center">
 
-    @if (!empty($post->author->name))
-      <p class="card-text mb-0"><small class="text-muted">{{$post->author->role}}</small></p>
-      @else
+    @if (!empty($post->author->full_name))
         <p class="card-text mb-0"><small class="text-muted">{{$post->author->full_name}}</small></p>
+      @else
+         <p class="card-text mb-0"><small class="text-muted">{{$post->author->role}}</small></p>
       @endif
       <a href="#" class="btn btn-secondary">Elolvasom</a>
     </div>
