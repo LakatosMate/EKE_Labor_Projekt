@@ -46,4 +46,27 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Jelszó sikeresen megváltoztatva!');
     }
+
+    public function deleteProfilePicture()
+    {
+        $user = Auth::user();
+
+        if ($user->profile_picture) {
+            // A fájl pontos elérési útja
+            $filePath = public_path($user->profile_picture);
+
+            // Ellenőrizzük, hogy a fájl létezik-e
+            if (file_exists($filePath)) {
+                unlink($filePath); // Törlés a fájlrendszerből
+            }
+
+            // Törlés az adatbázisból
+            $user->profile_picture = null;
+            $user->save();
+
+            return redirect()->back()->with('status', 'Profilkép sikeresen törölve.');
+        }
+
+        return redirect()->back()->with('error', 'Nincs profilkép beállítva.');
+    }
 }

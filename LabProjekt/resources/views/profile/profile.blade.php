@@ -12,6 +12,7 @@ Profilom
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mb-2" width="150px" src="{{ auth()->user()->profile_picture ? asset(auth()->user()->profile_picture) : asset('images/profile_avatar_placeholder.png') }}" alt="Profilkép">
+                    <a href="profile-picture-delete" class="btn btn-secondary" role="button">Profilkép törlése</a>
                     <span class="font-weight-bold">{{ Auth::user()->username }}</span>
                     <span class="text-black-50">{{ Auth::user()->email }}</span>
                     <span class="font-weight-bold">Jogkör: {{ Auth::user()->role }}</span>
@@ -78,7 +79,13 @@ Profilom
                         <div class="mt-3">
                             <span class="alert alert-success p-2">{{Session::get('success')}}</span>
                         </div>
-                    @endif                  
+                    @endif
+                    
+                    @if(session('error'))
+                        <div class="mt-3">
+                            <span class="alert alert-danger p-2">{{Session::get('error')}}</span>
+                        </div>
+                    @endif  
                 </div>
             </div>
         </div>
