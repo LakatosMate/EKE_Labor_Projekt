@@ -64,6 +64,7 @@ Eseti manuális teszt, folyamatosan. Hiba esetnén rögzíteni a hibaanalízis t
 | Authorizáció | Profilom | Oldal csak a bejelentkezett felhasználó érheti el. | |
 | Profilom | Profilkép szerkesztése | Kép, avatar feltőltése a felhasználó profiljához. Felhasználó kiválaszt egy képet és azt feltölti a rendszerben, ha sikeres a profil alatt látható a képe és kap értesítést. | |
 | Profilom | Jelszó megváltoztatása | A felhasználó meg tudja változtatni a jelszavát. Régi jelszó illetve az új jelszó megadásával. Amennyiben sikeres a jelszó megváltoztatás azt jelezzük a felhasználónak. | |
+| Admin felület | Felhasználó kezelés | Az admin kilistázva látja a felhasználókat és tudja módosítani a felhasználók nevét, emailjét, szerepkörét illetve tudja törölni is a felhasználókat. | |
 
 ## Rendszerátadás és üzemeltetés, karbantartás
 Az elkészült rendszer átadás-átvétele után megkezdődik a honlap publikálása az internetre, valamint folyamatos üzemeltetése. A tartalom karbantartásában részt vevő személy(ek)nek, a szükséges ismeretek megszerzéséhez oktatást tartunk illetve dokumentációt biztosítunk.
