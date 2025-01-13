@@ -9,18 +9,24 @@ class Post extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
-        'cím',
-        'leirás',
-        'image_path',
-        'szerző_id',
-        'is_publikált',
-        'dátum',
+        'title',         // A bejegyzés címe
+        'description',   // A bejegyzés leírása
+        'image_path',    // A kép elérési útja
+        'author_id',     // A szerző azonosítója
+        'is_published',  // Publikált állapot
+        'date',          // A bejegyzés dátuma
     ];
 
-    public function szerző()
+    protected $casts = [
+        'date' => 'datetime',
+        'is_published' => 'boolean',
+    ];
+    /**
+     * Kapcsolat a szerzővel (users tábla).
+     */
+    public function author()
     {
-        return $this->belongsTo(User::class, 'szerző_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 }
