@@ -22,6 +22,7 @@
       @auth
       <li ><a class="nav-link" href="/dashboard">Irányítópult</a></li>
       <li class="nav-item"><a class="nav-link" href="/profile">Profilom</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Bejegyzés</a></li>
  @if (Auth::check() && Auth::user()->role === 'admin')
     <li  class="nav-item"><a class="nav-link" href="/admin/users">Felhasználók kezelése</a></li>
  @endif
