@@ -46,17 +46,16 @@ Profilom
                     <hr>
 
                      <div class="row mt-3">
-                        <h5>Teljes név beállítása</h5>
+                        <h5 class="mb-3">Teljes név megváltoztatása</h5>
                         <form action="{{ route('profile.fullname.update') }}" method="POST">
                             @csrf
-                             <div class="form-group">
-                                <label for="full_name">Teljes név</label>
+                             <div class="input-group">
                                 <input id="full_name" type="text" name="full_name" class="form-control @error('full_name') is-invalid @enderror" value="{{ old('full_name', auth()->user()->full_name) }}">
                                 @error('full_name')
                                     <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                 @enderror
+                                <button type="submit" class="btn btn-outline-secondary">Mentés</button>
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Mentés</button>
                         </form>
                     </div>
                     <hr>
