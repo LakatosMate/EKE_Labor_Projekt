@@ -46,4 +46,16 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Jelszó sikeresen megváltoztatva!');
     }
+        public function updateFullName(Request $request)
+    {
+        $request->validate([
+            'full_name' => 'nullable|string|max:255',
+    ]);
+
+        $user = Auth::user();
+        $user->full_name = $request->full_name;
+        $user->save();
+
+        return back()->with('success', 'Teljes név sikeresen frissítve!');
+    }
 }
