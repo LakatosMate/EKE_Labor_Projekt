@@ -46,16 +46,41 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Jelszó sikeresen megváltoztatva!');
     }
-        public function updateFullName(Request $request)
+
+    public function updateFullName(Request $request)
     {
         $request->validate([
             'full_name' => 'nullable|string|max:255',
-    ]);
-
+        ]);
+    
         $user = Auth::user();
         $user->full_name = $request->full_name;
         $user->save();
-
+    
         return back()->with('success', 'Teljes név sikeresen frissítve!');
+    }
+
+    public function deleteProfilePicture()
+    {
+        $user = Auth::user();
+
+        if ($user->profile_picture) {
+            // A fájl pontos elérési útja
+            $filePath = public_path($user->profile_picture);
+
+            // Ellenőrizzük, hogy a fájl létezik-e
+            if (file_exists($filePath)) {
+                unlink($filePath); // Törlés a fájlrendszerből
+            }
+
+            // Törlés az adatbázisból
+            $user->profile_picture = null;
+            $user->save();
+
+            return redirect()->back()->with('status', 'Profilkép sikeresen törölve.');
+        }
+
+        return redirect()->back()->with('error', 'Nincs profilkép beállítva.');
+
     }
 }

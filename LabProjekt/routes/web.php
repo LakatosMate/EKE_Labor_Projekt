@@ -39,3 +39,5 @@ Route::delete('admin/users/{user}', [AdminController::class, 'destroy'])->name('
 
 Route::post('password-change', [ProfileController::class, 'updatePassword'])->name('password.update');
 Route::post('/profile/fullname/update', [ProfileController::class, 'updateFullName'])->name('profile.fullname.update');
+Route::get('profile-picture-delete', [ProfileController::class, 'deleteProfilePicture'])->name('profile.picture.delete');
+
