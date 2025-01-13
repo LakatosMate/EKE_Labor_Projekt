@@ -222,7 +222,7 @@
     <select id="items" onchange="window.location.href='?items=' + this.value">
         <option value="10" {{ request('items') == 10 ? 'selected' : '' }}>10</option>
         <option value="20" {{ request('items') == 20 ? 'selected' : '' }}>20</option>
-        <option value="50" {{ request('items') == 50 ? 'selected' : '' }}>50</option>
+        <option value="50" {{ request('items') == 50 ? 'selected' : '' }}>50</option>  <!--létrehoztam hogy tudjam commitolni ne dobja fel-->
     </select>
-</div>
+</div> 
 @endsection
