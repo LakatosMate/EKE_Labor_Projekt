@@ -3,7 +3,7 @@
 @section('title', 'Bejegyzések')
 
 @section('content')
-<h1 class="mb-4">Bejegyzések</h1>
+<h2 class="mb-4">Bejegyzések</h2>
 <a href="{{ route('post.create') }}" class="btn btn-primary mb-4">Új bejegyzés</a>
 
 @if ($message = Session::get('success'))
@@ -17,7 +17,7 @@
             <th>Cím</th>
             <th> Rövid Leírás</th>
             <th class="text-center">Szerző</th>
-            <th class="text-center">Publikált</th>
+            <th class="text-center">Publikus</th>
             <th class="text-center">Műveletek</th>
         </tr>
     </thead>
