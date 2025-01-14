@@ -35,7 +35,7 @@ Kezdőlap
           <h4 class="card-title h5 h4-sm">{{ $post->title}}</h4>
           <p class="card-text" style="text-align: justify;">{{ $post->short_description}}</p>
           <div class="text-end">
-            <a href="#" class="btn btn-secondary">Elolvasom</a>
+          <a href="{{ route('post.show', $post->id) }}" class="btn btn-secondary">Elolvasom</a>
           </div>
         </div>
 

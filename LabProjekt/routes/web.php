@@ -9,7 +9,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
 Route::get('login',[AuthController::class,'login'])->name('login');
 Route::post('logging_in',[AuthController::class,'logging_in'])->name('logging_in');
 Route::get('register',[RegistrationController::class,'register'])->name('register');
@@ -37,7 +38,10 @@ Route::get('admin/users/{user}/edit', [AdminController::class, 'edit'])->name('a
 Route::post('admin/users/{user}', [AdminController::class, 'update'])->name('admin.users.update');
 Route::delete('admin/users/{user}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
 
+
 Route::post('password-change', [ProfileController::class, 'updatePassword'])->name('password.update');
 Route::post('/profile/fullname/update', [ProfileController::class, 'updateFullName'])->name('profile.fullname.update');
 Route::get('profile-picture-delete', [ProfileController::class, 'deleteProfilePicture'])->name('profile.picture.delete');
+
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
 

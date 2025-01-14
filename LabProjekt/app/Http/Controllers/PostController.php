@@ -113,4 +113,9 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('post.index')->with('success', 'Bejegyzés sikeresen törölve.');
     }
+    public function show($id)
+    {
+        $post = Post::with('author')->findOrFail($id);
+        return view('post.show', compact('post'));
+    }
 }
