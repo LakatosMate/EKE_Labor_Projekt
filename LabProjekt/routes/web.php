@@ -41,4 +41,3 @@ Route::post('password-change', [ProfileController::class, 'updatePassword'])->na
 Route::post('/profile/fullname/update', [ProfileController::class, 'updateFullName'])->name('profile.fullname.update');
 Route::get('profile-picture-delete', [ProfileController::class, 'deleteProfilePicture'])->name('profile.picture.delete');
 
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');

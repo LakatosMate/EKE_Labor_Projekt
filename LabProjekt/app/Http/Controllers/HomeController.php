@@ -16,9 +16,4 @@ class HomeController extends Controller
         $posts = Post::with('author')->where('is_published', true)->orderBy('date', 'asc')->get();
         return view('main', compact('posts'));
     }
-    public function dashboard()
-{
-    $draftPosts = Post::with('author')->where('is_published', false)->paginate(10);
-    return view('dashboard', compact('draftPosts'));
-}
 }
