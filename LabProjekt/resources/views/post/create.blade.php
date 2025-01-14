@@ -42,7 +42,7 @@
                     </select>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="is_published" class="form-label">Publikált:</label>
+                    <label for="is_published" class="form-label">Publikus:</label>
                     <div class="form-check">
                         <input type="checkbox" id="is_published" name="is_published" value="1" class="form-check-input">
                         <label for="is_published" class="form-check-label">Igen</label>

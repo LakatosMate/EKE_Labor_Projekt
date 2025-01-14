@@ -41,7 +41,7 @@
         </div>
 
         <div style="margin-bottom: 15px;">
-            <label for="is_published" style="display: block; font-weight: bold; margin-bottom: 5px;">Publikált:</label>
+            <label for="is_published" style="display: block; font-weight: bold; margin-bottom: 5px;">Publikus:</label>
             <input type="checkbox" id="is_published" name="is_published" value="1" {{ $post->is_published ? 'checked' : '' }} style="margin-right: 5px;">
             <span>Igen</span>
         </div>
