@@ -35,6 +35,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'short_description' => 'nullable|string',
             'image_path' => 'nullable|image',
             'author_id' => 'required|exists:users,id',
             'is_published' => 'nullable|boolean',
@@ -50,6 +51,7 @@ class PostController extends Controller
         Post::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
+            'short_descreption' => $request->input('short_description'),
             'image_path' => $imagePath,
             'author_id' => $request->input('author_id'),
             'is_published' => $request->input('is_published', false),
@@ -72,6 +74,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'short_descreption' => 'nullable|string',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image',
             'author_id' => 'required|exists:users,id',
@@ -89,6 +92,7 @@ class PostController extends Controller
 
         $post->update([
             'title' => $request->input('title'),
+            'short_descreption' => $request->input(' short_description'),
             'description' => $request->input('description'),
             'image_path' => $imagePath,
             'author_id' => $request->input('author_id'),

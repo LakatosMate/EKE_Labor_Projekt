@@ -12,6 +12,10 @@
             <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
         </div>
 
+         <div class="col-md-12 mb-3">
+                    <label for="short_description" class="form-label">Rövid leírás:</label>
+                    <textarea id="short_description" name="short_description" rows="4" class="form-control" placeholder="Pár mondat a bejegyzésről"></textarea>
+                </div>
         <div style="margin-bottom: 15px;">
             <label for="description" style="display: block; font-weight: bold; margin-bottom: 5px;">Leírás:</label>
             <textarea id="description" name="description" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">{{ old('description', $post->description) }}</textarea>

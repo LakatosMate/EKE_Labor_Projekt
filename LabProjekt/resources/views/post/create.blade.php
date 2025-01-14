@@ -16,6 +16,10 @@
                     <input type="text" id="title" name="title" class="form-control" required>
                 </div>
                 <div class="col-md-12 mb-3">
+                    <label for="short_descreption" class="form-label">Rövid leírás:</label>
+                    <textarea id="short_description" name="short_description" rows="4" class="form-control" placeholder="Pár mondat a bejegyzésről"></textarea>
+                </div>
+                <div class="col-md-12 mb-3">
                     <label for="description" class="form-label">Leírás:</label>
                     <textarea id="description" name="description" rows="4" class="form-control"></textarea>
                 </div>
@@ -27,7 +31,7 @@
                     </div>
                     <div id="image-preview-container"></div>
                 </div>
-                
+
                 <div class="col-md-12 mb-3">
                     <label for="author_id" class="form-label">Szerző:</label>
                     <select id="author_id" name="author_id" class="form-select" required>
@@ -57,23 +61,23 @@
             function previewImage() {
                 const file = event.target.files ? event.target.files[0] : event.target.previousElementSibling.files[0];
                 const previewContainer = document.getElementById("image-preview-container");
-        
+
                 if (file) {
         const reader = new FileReader();
 
         reader.onload = function(e) {
             const preview = document.createElement("img");
             preview.src = e.target.result;
-            preview.style.width = "150px"; 
-            preview.style.height = "auto";  
+            preview.style.width = "150px";
+            preview.style.height = "auto";
 
             const newLayer = document.createElement("div");
             newLayer.classList.add("image-preview-layer");
-            newLayer.style.marginTop = "10px"; 
+            newLayer.style.marginTop = "10px";
 
             newLayer.appendChild(preview);
 
-            previewContainer.innerHTML = ''; 
+            previewContainer.innerHTML = '';
             previewContainer.appendChild(newLayer);
         }
 

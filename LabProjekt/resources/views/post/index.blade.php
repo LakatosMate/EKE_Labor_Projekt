@@ -15,7 +15,7 @@
         <tr>
             <th>Kép</th>
             <th>Cím</th>
-            <th>Leírás</th>
+            <th> Rövid Leírás</th>
             <th class="text-center">Szerző</th>
             <th class="text-center">Publikált</th>
             <th class="text-center">Műveletek</th>
@@ -32,7 +32,7 @@
                 @endif
             </td>
             <td>{{ $post->title }}</td>
-            <td>{{ $post->description }}</td>
+            <td>{{ $post->short_description }}</td>
             <td class="text-center">{{ $post->author->username }}</td>
             <td class="text-center" >{{ $post->is_published ? 'Igen' : 'Nem' }}</td>
             <td  class="text-nowrap text-center">
@@ -61,4 +61,4 @@
         </select>
     </div>
 </div>
-@endsection 
+@endsection

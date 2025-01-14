@@ -10,7 +10,8 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',         // A bejegyzés címe
+        'title',
+        'short_description',     // A bejegyzés címe
         'description',   // A bejegyzés leírása
         'image_path',    // A kép elérési útja
         'author_id',     // A szerző azonosítója

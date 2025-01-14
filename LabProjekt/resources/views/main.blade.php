@@ -33,12 +33,12 @@ Kezdőlap
 
         <div class="card-body custom-body">
           <h4 class="card-title h5 h4-sm">{{ $post->title}}</h4>
-          <p class="card-text" style="text-align: justify;">{{ $post->description}}</p>
+          <p class="card-text" style="text-align: justify;">{{ $post->short_description}}</p>
           <div class="text-end">
             <a href="#" class="btn btn-secondary">Elolvasom</a>
           </div>
         </div>
-        
+
       </div>
       <div class="card-footer text-end text-muted">
         @if (!empty($post->author->full_name))
