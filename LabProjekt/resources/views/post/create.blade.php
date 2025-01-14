@@ -16,7 +16,7 @@
                     <input type="text" id="title" name="title" class="form-control" required>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="short_descreption" class="form-label">Rövid leírás:</label>
+                    <label for="short_description" class="form-label">Rövid leírás:</label>
                     <textarea id="short_description" name="short_description" rows="4" class="form-control" placeholder="Pár mondat a bejegyzésről"></textarea>
                 </div>
                 <div class="col-md-12 mb-3">
@@ -32,15 +32,6 @@
                     <div id="image-preview-container"></div>
                 </div>
 
-                <div class="col-md-12 mb-3">
-                    <label for="author_id" class="form-label">Szerző:</label>
-                    <select id="author_id" name="author_id" class="form-select" required>
-                        <option value="">Válassz egy szerzőt</option>
-                        @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->username }}</option>
-                        @endforeach
-                    </select>
-                </div>
                 <div class="col-md-12 mb-3">
                     <label for="is_published" class="form-label">Publikus:</label>
                     <div class="form-check">
@@ -63,26 +54,26 @@
                 const previewContainer = document.getElementById("image-preview-container");
 
                 if (file) {
-        const reader = new FileReader();
+                    const reader = new FileReader();
 
-        reader.onload = function(e) {
-            const preview = document.createElement("img");
-            preview.src = e.target.result;
-            preview.style.width = "150px";
-            preview.style.height = "auto";
+                    reader.onload = function(e) {
+                        const preview = document.createElement("img");
+                        preview.src = e.target.result;
+                        preview.style.width = "150px";
+                        preview.style.height = "auto";
 
-            const newLayer = document.createElement("div");
-            newLayer.classList.add("image-preview-layer");
-            newLayer.style.marginTop = "10px";
+                        const newLayer = document.createElement("div");
+                        newLayer.classList.add("image-preview-layer");
+                        newLayer.style.marginTop = "10px";
 
-            newLayer.appendChild(preview);
+                        newLayer.appendChild(preview);
 
-            previewContainer.innerHTML = '';
-            previewContainer.appendChild(newLayer);
-        }
+                        previewContainer.innerHTML = '';
+                        previewContainer.appendChild(newLayer);
+                    };
 
-        reader.readAsDataURL(file);
-    }
+                    reader.readAsDataURL(file);
+                }
             }
         </script>
     </div>
