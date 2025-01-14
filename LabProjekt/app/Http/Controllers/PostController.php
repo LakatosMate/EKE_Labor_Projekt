@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -25,8 +25,7 @@ class PostController extends Controller
     // Új bejegyzés létrehozása (űrlap megjelenítése)
     public function create()
     {
-        $users = User::all();
-        return view('post.create', compact('users'));
+        return view('post.create');
     }
 
     // Új bejegyzés tárolása
@@ -37,7 +36,6 @@ class PostController extends Controller
             'description' => 'nullable|string',
             'short_description' => 'nullable|string',
             'image_path' => 'nullable|image',
-            'author_id' => 'required|exists:users,id',
             'is_published' => 'nullable|boolean',
             'date' => 'required|date',
         ]);
@@ -53,7 +51,7 @@ class PostController extends Controller
             'description' => $request->input('description'),
             'short_description' => $request->input('short_description'),
             'image_path' => $imagePath,
-            'author_id' => $request->input('author_id'),
+            'author_id' => Auth::id(),
             'is_published' => $request->boolean('is_published'),
             'date' => $request->input('date'),
         ]);
@@ -65,8 +63,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        $users = User::all();
-        return view('post.edit', compact('post', 'users'));
+        return view('post.edit', compact('post'));
     }
 
     // Bejegyzés frissítése
@@ -77,7 +74,6 @@ class PostController extends Controller
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image',
-            'author_id' => 'required|exists:users,id',
             'is_published' => 'nullable|boolean',
             'date' => 'required|date',
         ]);
@@ -95,7 +91,7 @@ class PostController extends Controller
             'short_description' => $request->input('short_description'),
             'description' => $request->input('description'),
             'image_path' => $imagePath,
-            'author_id' => $request->input('author_id'),
+            'author_id' => Auth::id(),
             'is_published' => $request->boolean('is_published'),
             'date' => $request->input('date'),
         ]);
@@ -113,6 +109,8 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('post.index')->with('success', 'Bejegyzés sikeresen törölve.');
     }
+
+    // Bejegyzés megtekintése
     public function show($id)
     {
         $post = Post::with('author')->findOrFail($id);
