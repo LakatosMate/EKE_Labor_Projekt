@@ -12,10 +12,11 @@
             <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
         </div>
 
-         <div class="col-md-12 mb-3">
-                    <label for="short_description" class="form-label">Rövid leírás:</label>
-                    <textarea id="short_description" name="short_description" rows="4" class="form-control" placeholder="Pár mondat a bejegyzésről"></textarea>
-                </div>
+        <div class="col-md-12 mb-3">
+            <label for="short_description" class="form-label">Rövid leírás:</label>
+            <textarea id="short_description" name="short_description" rows="4" class="form-control" placeholder="Pár mondat a bejegyzésről">{{ old('short_description', $post->short_description) }}</textarea>
+        </div>
+
         <div style="margin-bottom: 15px;">
             <label for="description" style="display: block; font-weight: bold; margin-bottom: 5px;">Leírás:</label>
             <textarea id="description" name="description" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">{{ old('description', $post->description) }}</textarea>
@@ -27,17 +28,6 @@
             @if ($post->image_path)
             <p>Jelenlegi kép: <a href="{{ asset($post->image_path) }}" target="_blank">{{ $post->image_path }}</a></p>
             @endif
-        </div>
-
-        <div style="margin-bottom: 15px;">
-            <label for="author_id" style="display: block; font-weight: bold; margin-bottom: 5px;">Szerző:</label>
-            <select id="author_id" name="author_id" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
-                @foreach ($users as $user)
-                <option value="{{ $user->id }}" {{ $post->author_id == $user->id ? 'selected' : '' }}>
-                    {{ $user->username }}
-                </option>
-                @endforeach
-            </select>
         </div>
 
         <div style="margin-bottom: 15px;">
