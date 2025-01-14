@@ -2,7 +2,7 @@
 
 @section('content')
 <main>
-    <h1 style="margin-bottom: 20px; font-size: 1.5em; font-weight: bold;">Bejegyzés szerkesztése</h1>
+    <h2 style="margin-bottom: 20px; font-size: 1.5em; font-weight: bold;">Bejegyzés szerkesztése</h2>
     <form action="{{ route('post.update', $post->id) }}" method="POST" enctype="multipart/form-data" style="background: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
         @csrf
         @method('PUT')
