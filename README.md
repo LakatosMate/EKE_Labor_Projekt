@@ -69,6 +69,7 @@ Eseti manuális teszt, folyamatosan. Hiba esetnén rögzíteni a hibaanalízis t
 | Profilom | Teljes név beállítás | A felhasználó a profiljában megadhatja a teljes nevét| OK | MM |
 | Bejegyzés | Kép megjelenítés | Bejegyzések képei látszódjanak a push után| NOK| FÁ |
 | Bejegyzés | Publikát | Publikát státusz megjelenítése bejegyzés oldalon| NOK| FÁ |
+| Vizualitás | egységes kinézet | Egyforma kinézet lista, címsor méret | NOK| FÁ |
 
 ## Rendszerátadás és üzemeltetés, karbantartás
 Az elkészült rendszer átadás-átvétele után megkezdődik a honlap publikálása az internetre, valamint folyamatos üzemeltetése. A tartalom karbantartásában részt vevő személy(ek)nek, a szükséges ismeretek megszerzéséhez oktatást tartunk illetve dokumentációt biztosítunk.
@@ -85,4 +86,4 @@ Esetleges hibák feltárása és ezeknek a jelzése. (Feladat rögzítése a Bac
 | --- | --- | --- | --- | --- |
 | 1 | Bejegyzés | Bejegyzés képei rossz mappába kerületek így gitnore lett |  FÁ | Done  |
 | 2 | Bejegyzés | Csak a publikált bejegyzéseket engedte hozzáadni (backend részhez) |  FÁ | Done  |
-
+| 3 | Vizualitás | Különböző méretű címsor, eltérés az elemek számának megjelenítésénél |  FÁ | in progress  |
