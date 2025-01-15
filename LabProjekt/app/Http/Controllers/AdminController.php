@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
+        $perPage = $request->input('perPage', 10);
+
+        $users = User::paginate($perPage);
+
         return view('admin.users.index', compact('users'));
     }
 
@@ -31,7 +34,7 @@ class AdminController extends Controller
             'role' => $request->role,
         ]);
         
-        return redirect()->route('admin.users.index')->with('success', 'Felhasználó frissítve. ');
+        return redirect()->route('admin.users.index')->with('success', 'Felhasználó frissítve.');
     }
 
     public function destroy(User $user)
