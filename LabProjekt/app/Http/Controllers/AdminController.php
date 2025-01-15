@@ -3,11 +3,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function index(Request $request)
     {
+        if (!auth()->check()) {
+            return view('login');
+        }
+        if (!(auth::user()->role === 'admin')) { 
+            abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
+        }
+
         $perPage = $request->input('perPage', 10);
 
         $users = User::paginate($perPage);
@@ -17,6 +25,9 @@ class AdminController extends Controller
 
     public function edit(User $user)
     {
+        if (!(auth::user()->role === 'admin')) { 
+            abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
+        }
         return view('admin.users.edit', compact('user'));
     }
 

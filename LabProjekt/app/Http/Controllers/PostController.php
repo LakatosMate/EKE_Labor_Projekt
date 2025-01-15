@@ -11,6 +11,13 @@ class PostController extends Controller
     // Bejegyzések listázása
     public function index(Request $request)
     {
+        if (!auth()->check()) {
+            return view('login');
+        }
+        if (!(auth()->user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+            abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
+        }
+
         $itemsPerPage = $request->query('items', 10);
 
         if (!in_array($itemsPerPage, [10, 20, 50])) {
@@ -25,6 +32,10 @@ class PostController extends Controller
     // Új bejegyzés létrehozása (űrlap megjelenítése)
     public function create()
     {
+        if (!(auth()->user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+            abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
+        }
+
         return view('post.create');
     }
 
@@ -62,6 +73,10 @@ class PostController extends Controller
     // Bejegyzés szerkesztése (űrlap megjelenítése)
     public function edit($id)
     {
+        if (!(auth()->user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+            abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
+        }
+
         $post = Post::findOrFail($id);
         return view('post.edit', compact('post'));
     }
