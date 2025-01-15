@@ -57,4 +57,15 @@ Kezdőlap
         <span class="alert alert-danger p-2">{{Session::get('fail')}}</span>
         </div>
     @endif
+
+    <div class="d-flex justify-content-end align-items-center">
+    <label for="perPage" class="form-label me-2">Elemek száma oldalanként:</label>
+    <form method="GET" action="{{ route('main') }}" class="d-inline-block">
+        <select id="perPage" name="perPage" class="form-select w-auto" onchange="this.form.submit()">
+            <option value="10" {{ request('perPage') == 10 ? 'selected' : '' }}>10</option>
+            <option value="20" {{ request('perPage') == 20 ? 'selected' : '' }}>20</option>
+            <option value="50" {{ request('perPage') == 50 ? 'selected' : '' }}>50</option>
+        </select>
+    </form>
+    </div>
 @endsection
