@@ -28,6 +28,18 @@ class PostController extends Controller
 
         return view('post.index', compact('posts'));
     }
+    public function main(Request $request)
+    {
+        $itemsPerPage = $request->query('itemsPerPage', 10);
+    
+        if (!in_array($itemsPerPage, [10, 20, 50])) {
+            $itemsPerPage = 10;
+        }
+    
+        $posts = Post::with('author')->paginate($itemsPerPage);
+    
+        return view('main', compact('posts'));
+    }
 
     // Új bejegyzés létrehozása (űrlap megjelenítése)
     public function create()
