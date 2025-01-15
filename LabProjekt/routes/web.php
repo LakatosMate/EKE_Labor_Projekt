@@ -16,6 +16,8 @@ Route::post('logging_in',[AuthController::class,'logging_in'])->name('logging_in
 Route::get('register',[RegistrationController::class,'register'])->name('register');
 Route::post('registration',[RegistrationController::class,'registration'])->name('registration');
 
+Route::get('/main', [PostController::class, 'main'])->name('main');
+
 
 Route::resource('post', PostController::class);
 //Middlaware behozatala.
