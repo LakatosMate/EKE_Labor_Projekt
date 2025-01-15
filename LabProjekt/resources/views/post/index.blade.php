@@ -4,7 +4,6 @@
 
 @section('content')
 <h2 class="mb-4">Bejegyzések</h2>
-<a href="{{ route('post.create') }}" class="btn btn-primary mb-4">Új bejegyzés</a>
 
 @if ($message = Session::get('success'))
     <div class="alert alert-success">{{ $message }}</div>

@@ -15,5 +15,16 @@
             <h4>Üdvözöllek kedves, {{ Auth::user()->full_name }}!</h4>
         @endif
         <p>Legyen szép napod!</p>
+
+        
+        @if (Auth::check() && (Auth::user()->role === 'szerkesztő' || Auth::user()->role === 'admin'))
+            <a href="/post" class="btn btn-primary mb-4">Bejegyzések</a>
+            <a href="{{ route('post.create') }}" class="btn btn-primary mb-4">Új bejegyzés</a>
+        @endif
+
+        @if (Auth::check() && Auth::user()->role === 'admin')
+            <a href="/admin/users" class="btn btn-primary mb-4">Felhasználók kezelése</a>
+        @endif
+        
     </div>
 @endsection
