@@ -38,10 +38,7 @@
                         <label for="is_published" class="form-check-label">Igen</label>
                     </div>
                 </div>
-                <div class="col-md-12 mb-3">
-                    <label for="date" class="form-label">Dátum:</label>
-                    <input type="datetime-local" id="date" name="date" class="form-control" required>
-                </div>
+
                 <input type="hidden" name="author_id" value="{{ auth()->id() }}">
             </div>
             <div class="mt-3 text-center">

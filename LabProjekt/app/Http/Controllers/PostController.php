@@ -14,7 +14,7 @@ class PostController extends Controller
         if (!auth::check()) {
             return view('login');
         }
-        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) {
             abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
         }
 
@@ -31,20 +31,20 @@ class PostController extends Controller
     public function main(Request $request)
     {
         $itemsPerPage = $request->query('itemsPerPage', 10);
-    
+
         if (!in_array($itemsPerPage, [10, 20, 50])) {
             $itemsPerPage = 10;
         }
-    
+
         $posts = Post::with('author')->paginate($itemsPerPage);
-    
+
         return view('main', compact('posts'));
     }
 
     // Új bejegyzés létrehozása (űrlap megjelenítése)
     public function create()
     {
-        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) {
             abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
         }
 
@@ -60,7 +60,7 @@ class PostController extends Controller
             'short_description' => 'nullable|string',
             'image_path' => 'nullable|image',
             'is_published' => 'nullable|boolean',
-            'date' => 'required|date',
+            //'date' => 'required|date',
         ]);
 
         $imagePath = null;
@@ -76,7 +76,7 @@ class PostController extends Controller
             'image_path' => $imagePath,
             'author_id' => Auth::id(),
             'is_published' => $request->boolean('is_published'),
-            'date' => $request->input('date'),
+            'date' => now(),
         ]);
 
         return redirect()->route('post.index')->with('success', 'Bejegyzés sikeresen létrehozva.');
@@ -85,7 +85,7 @@ class PostController extends Controller
     // Bejegyzés szerkesztése (űrlap megjelenítése)
     public function edit($id)
     {
-        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) {
             abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
         }
 
