@@ -11,10 +11,10 @@ class PostController extends Controller
     // Bejegyzések listázása
     public function index(Request $request)
     {
-        if (!auth()->check()) {
+        if (!auth::check()) {
             return view('login');
         }
-        if (!(auth()->user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
             abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
         }
 
@@ -44,7 +44,7 @@ class PostController extends Controller
     // Új bejegyzés létrehozása (űrlap megjelenítése)
     public function create()
     {
-        if (!(auth()->user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
             abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
         }
 
@@ -85,7 +85,7 @@ class PostController extends Controller
     // Bejegyzés szerkesztése (űrlap megjelenítése)
     public function edit($id)
     {
-        if (!(auth()->user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
+        if (!(auth::user()->role === 'szerkesztő' || auth::user()->role === 'admin')) { 
             abort(403, 'Nincs jogosultságod az oldal megtekintéséhez.');
         }
 
