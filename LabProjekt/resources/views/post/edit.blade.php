@@ -36,10 +36,7 @@
             <span>Igen</span>
         </div>
 
-        <div style="margin-bottom: 15px;">
-            <label for="date" style="display: block; font-weight: bold; margin-bottom: 5px;">Dátum:</label>
-            <input type="datetime-local" id="date" name="date" value="{{ old('date', $post->date->format('Y-m-d\TH:i')) }}" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
-        </div>
+
 
         <button type="submit" style="background: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">Frissítés</button>
     </form>

@@ -102,7 +102,7 @@ class PostController extends Controller
             'description' => 'nullable|string',
             'image_path' => 'nullable|image',
             'is_published' => 'nullable|boolean',
-            'date' => 'required|date',
+
         ]);
 
         $post = Post::findOrFail($id);
@@ -120,7 +120,7 @@ class PostController extends Controller
             'image_path' => $imagePath,
             'author_id' => Auth::id(),
             'is_published' => $request->boolean('is_published'),
-            'date' => $request->input('date'),
+
         ]);
 
         return redirect()->route('post.index')->with('success', 'Bejegyzés sikeresen frissítve.');
