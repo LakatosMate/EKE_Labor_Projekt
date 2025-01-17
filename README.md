@@ -86,4 +86,4 @@ Esetleges hibák feltárása és ezeknek a jelzése. (Feladat rögzítése a Bac
 | --- | --- | --- | --- | --- |
 | 1 | Bejegyzés | Bejegyzés képei rossz mappába kerületek így gitnore lett |  FÁ | Done  |
 | 2 | Bejegyzés | Csak a publikált bejegyzéseket engedte hozzáadni (backend részhez) |  FÁ | Done  |
-| 3 | Vizualitás | Különböző méretű címsor, eltérés az elemek számának megjelenítésénél |  FÁ | in progress  |
+| 3 | Vizualitás | Különböző méretű címsor, eltérés az elemek számának megjelenítésénél |  FÁ | Done |
